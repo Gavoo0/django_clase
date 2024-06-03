@@ -3,24 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     {%load static%}
-    <title>Alumnos</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <script src="{%static 'js'%}"></script>
-    <link rel="stylesheet" href="{%static 'css'%}">
 </head>
 <body>
-    <h1>MUNDO OLA</h1>
     <br>
-    <img src="{%static 'img/patito.png'%}" alt="">
+    <button class="btn btn-info">
+        <a href="{% url 'alumnosAdd' %}">Agregar</a>
+    </button>
+    <br>
+    <br>
+    <div id="idMensaje">
+        {%if mensaje%}
+            {{mensaje}}
+        {%endif%}
+    </div>
     <table class="table table-dark">
+        {%if alumnos%}
         <thead>
           <tr>
             <th scope="col">Rut</th>
             <th scope="col">Nombre</th>
             <th scope="col">Apellido Paterno</th>
-            <th scope="col">Apellido Materno</th>
-            <th scope="col">Genero</th>
+            <th scope="col">Agregar</th>
+            <th scope="col">Modificar</th>
           </tr>
         </thead>
         
@@ -30,20 +37,12 @@
             <th scope="row">{{alumno.rut}}</th>
             <td>{{alumno.nombre}}</td>
             <td>{{alumno.apellido_paterno}}</td>
-            <td>{{alumno.id_genero.genero}}</td>
-            <td>{{alumno.id_genero.genero}}</td>
+
           </tr>
           {%endfor%}
         </tbody>
-      </table>
-      
-
-
-
-
-
-
-
+        {%endif%}
+      </table>   
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
