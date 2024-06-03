@@ -20,18 +20,22 @@ class Alumno(models.Model):
     activo = models.IntegerField()
     def __str__(self):
         return str(self.nombre)+" "+str(self.apellido_paterno)
+    
+class Ramo(models.Model):
+    id_ramo = models.AutoField(db_column='idRamo',primary_key=True)
+    ramo = models.CharField(max_length=200,null=False,blank=False)
+    creditos = models.IntegerField() 
+    escuela = models.CharField(max_length=45)
+    def __str__(self):
+        return str(self.ramo)
 
 class Seccion(models.Model):
     id_seccion = models.AutoField(db_column='idSeccion',primary_key=True)
     seccion = models.CharField(max_length=100,null=False,blank=False)
+    id_ramo= models.ForeignKey('Ramo',on_delete=models.CASCADE,db_column='idRamo')
     def __str__(self):
         return str(self.seccion)
 
-class Ramo(models.Model):
-    id_ramo = models.AutoField(db_column='idRamo',primary_key=True)
-    ramo = models.CharField(max_length=200,null=False,blank=False)
-    def __str__(self):
-        return str(self.ramo)
 
 class SeccionRamo(models.Model):
     id_SeccionRamo = models.AutoField(db_column='idSeccionRamo',primary_key=True)
