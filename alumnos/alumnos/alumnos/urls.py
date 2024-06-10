@@ -9,4 +9,8 @@ urlpatterns = [
     path('alumnos_del/<str:pk>',views.alumnos_del,name="alumnos_del"),
     path('alumnos_findEdit/<str:pk>',views.alumnos_findEdit,name="alumnos_findEdit"),
     path('alumnosUpdate', views.alumnosUpdate, name='alumnosUpdate'),
+    path('formRamo',views.formRamo,name='formRamo'),
+    path('crud_ramo',views.crud_ramo,name='crud_ramo'),
+    path('ramo_del/<str:pk>',views.ramo_del,name="ramo_del"),
+    path('seccion_form',views.seccion_form,name="seccion_form")
 ]
