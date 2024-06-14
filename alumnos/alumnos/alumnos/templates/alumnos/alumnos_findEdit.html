@@ -11,7 +11,7 @@
     <script src="{% static 'js/main.js' %}" ></script> {% endcomment %}
 </head>
 <body>
-    <h1>Agregar Alumnos</h1>
+    <h1>Modificar Alumnos</h1>
     {% if mensaje %}
     <div class="alert alert-primary" role="alert" id="idMensaje">
       
@@ -22,15 +22,15 @@
     <div class="container">
         <div class="row">
          
-          {% if alumno %}
-          <form action="{% url "alumnosUpdate" %}" method="post">
+          {% if alumnos %}
+          <form action="{% url 'alumnosUpdate' %}" method="post">
             {% csrf_token%} 
 
-            <pre>Rut <input type="text" name="rut" value="{{alumno.rut}}"></pre>
-            <pre>Nombre <input type="text" name="nombre" value="{{alumno.nombre}}"></pre>
-            <pre>Apellido Paterno <input type="text" name="apaterno" value="{{alumno.apellido_paterno}}"></pre>
-            <pre>Apellido Materno <input type="text" name="amaterno" value="{{alumno.apellido_materno}}"></pre>
-            <pre>Fecha Nacimiento <input type="date" name="fechaNac" value="{{alumno.fecha_nacimiento|date:'Y-m-d'}}"></pre>
+            <pre>Rut <input type="text" name="rut" value="{{alumnos.rut}}"></pre>
+            <pre>Nombre <input type="text" name="nombre" value="{{alumnos.nombre}}"></pre>
+            <pre>Apellido Paterno <input type="text" name="apaterno" value="{{alumnos.apellido_paterno}}"></pre>
+            <pre>Apellido Materno <input type="text" name="amaterno" value="{{alumnos.apellido_materno}}"></pre>
+            <pre>Fecha Nacimiento <input type="date" name="fechaNac" value="{{alumnos.fecha_nacimiento|date:'Y-m-d'}}"></pre>
             <pre>Genero <select name="genero" id="genero">
               {% for genero in generos %}
                 {% if genero.genero == alumno.id_genero.genero %}
@@ -41,9 +41,9 @@
               {% endfor %}
           
             </select></pre>
-            <pre>Celular: <input type="text" name="telefono" value="{{alumno.telefono}}"></pre>
-            <pre>Email : <input type="text" name="email" value="{{alumno.email}}"></pre>
-            <pre>Direccion: <input type="text" name="direccion" value="{{alumno.direccion}}"></pre>
+            <pre>Celular: <input type="text" name="telefono" value="{{alumnos.telefono}}"></pre>
+            <pre>Email : <input type="text" name="email" value="{{alumnos.email}}"></pre>
+            <pre>Direccion: <input type="text" name="direccion" value="{{alumnos.direccion}}"></pre>
 
             <input type="submit" value="Agregar">
 

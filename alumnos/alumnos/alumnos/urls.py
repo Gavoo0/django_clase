@@ -12,5 +12,8 @@ urlpatterns = [
     path('formRamo',views.formRamo,name='formRamo'),
     path('crud_ramo',views.crud_ramo,name='crud_ramo'),
     path('ramo_del/<str:pk>',views.ramo_del,name="ramo_del"),
-    path('seccion_form',views.seccion_form,name="seccion_form")
+    path('seccion_form',views.seccion_form,name="seccion_form"),
+    path('alumnoForm',views.alumnoForm,name='alumnoForm'),
+    path('menu',views.menu,name="menu"),
+    
 ]

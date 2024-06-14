@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import Alumno,Genero,Ramo
-from .forms import RamoForm,SeccionForm
+from .forms import RamoForm,SeccionForm,AlumnoForm
 # Create your views here.
 def index(request):
     alumnos=Alumno.objects.all()
@@ -179,3 +179,23 @@ def seccion_form(request):
         context={"form":form} 
         return render(request,"alumnos/seccion_form.html",context)
 
+def alumnoForm(request):
+    context={}
+    if request.method=="POST":
+        form=AlumnoForm(request.POST)
+        if form.is_valid:
+            form.save()
+            form=AlumnoForm()
+            context={"mensaje":'Ok, datos grabados...',
+                     "form":form}
+            return render(request,"alumnos/alumnoForm.html",context)
+    else:
+        form=AlumnoForm()
+        context={"form":form} 
+        return render(request,"alumnos/alumnoForm.html",context)
+
+def menu(request):
+    request.session["usuario"]="godoy"
+    usuario=request.session["usuario"]
+    context={'usuario':usuario}
+    return render(request,'administrador/menu.html',context)

@@ -55,6 +55,7 @@ ROOT_URLCONF = 'instituto.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS' : [BASE_DIR / "templates",],
         'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -67,6 +68,8 @@ TEMPLATES = [
         },
     },
 ]
+
+LOGIN_REDIRECT_URL = "menu"
 
 WSGI_APPLICATION = 'instituto.wsgi.application'
 
