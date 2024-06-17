@@ -15,5 +15,4 @@ urlpatterns = [
     path('seccion_form',views.seccion_form,name="seccion_form"),
     path('alumnoForm',views.alumnoForm,name='alumnoForm'),
     path('menu',views.menu,name="menu"),
-    
 ]

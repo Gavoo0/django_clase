@@ -14,13 +14,17 @@ def listadoSQL(request):
 
 def crud(request):
     alumnos=Alumno.objects.all()
-    context={'alumnos':alumnos}
+    usuario=request.session["usuario"] 
+    context={'alumnos':alumnos,
+             "usuario":usuario}
     return render(request,'alumnos/alumnos_list.html',context)
 
 def alumnosAdd(request):
+    usuario=request.session["usuario"]    
     if request.method != "POST":
         generos = Genero.objects.all()
-        context = {"generos": generos}
+        context = {"generos": generos,
+                   "usuario":usuario}
         return render(request, 'alumnos/alumnos_add.html', context)
     else:
         rut = request.POST["rut"]
@@ -48,7 +52,8 @@ def alumnosAdd(request):
             activo=activo
         )
         obj.save()
-        context = {'mensaje': "OK, datos grabados..."}
+        context = {'mensaje': "OK, datos grabados...",
+                   "usuario":usuario}
         return render(request, 'alumnos/alumnos_add.html', context)
 
 def alumnos_del(request,pk):
@@ -58,8 +63,8 @@ def alumnos_del(request,pk):
         alumno.delete()
         mensaje='Datos Eliminados'
         alumnos=Alumno.objects.all()
-        context={"mensaje":mensaje}
-        return render(request,'alumnos/alumnos_list.html',context)
+        context={"mensaje":mensaje,}
+        return render(request,'alumnos/alumnos_list.html',context,)
     except:
         mensaje='Eror, no existe el rut...'
         alumnos=Alumno.objects.all()
